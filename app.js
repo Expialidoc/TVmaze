@@ -39,7 +39,7 @@
         const $showsList = $("#shows-list");
         $showsList.empty();
       
-        for (let show of shows) {                                     //"/shows/:id/images">
+        for (let show of shows) {                                    
           let $item = $(
             `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
                <div class="card" data-show-id="${show.id}">
@@ -109,7 +109,7 @@
       $("#shows-list").on("click","#epi-btn", async function epiSearch (evt) {
         evt.preventDefault();
     
-      let id = $(evt).closest("div.card", ".col-md-6 col-lg-3 Show").data('show-id');
+      let id = $(evt.target).closest(".Show").data('show-id');
         let episodes = await getEpisodes(id);
       
         populateEpisodes(episodes);
